@@ -1,0 +1,22 @@
+{
+  "name": "i1820-log",
+  "version": "1.0.0",
+  "description": "The log micro service of the Giant I1829 platform.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/I1820/I1820-log.git"
+  },
+  "author": "@anvari1313 @amirmh @aliizadi",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/I1820/I1820-log/issues"
+  },
+  "homepage": "https://github.com/I1820/I1820-log#readme",
+  "dependencies": {
+    "mqtt": "^2.9.3"
+  }
+}
