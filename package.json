@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/I1820/I1820-log#readme",
   "dependencies": {
+    "cassandra-driver": "^3.2.2",
     "mqtt": "^2.9.3"
   }
 }
