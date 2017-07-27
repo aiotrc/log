@@ -4,7 +4,6 @@ var mqtt_router = require('./route/mqtt-router');
 
 client.on('connect', function () {
     client.subscribe('log');
-
 });
 
 client.on('message', function (topic, message) {
