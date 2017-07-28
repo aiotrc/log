@@ -6,7 +6,7 @@ For starting the dependencies of the project should be installed with npm:
 
 `npm install`
 
-## Message Passing Protocol
+## Message Ptemperaturetocol
 
 ~~~json
 {
@@ -26,3 +26,24 @@ For starting the dependencies of the project should be installed with npm:
 **RequestToken** is for making each message unique. It is needed for sending the response of the request. It is send back in the response of requests to show that the sent response is the response of the request with this token.
 
 **Body** is the object of the parameter that should be sent. For example the data that should be logged.
+
+## Logging
+
+For the log insertion the body has to contain two parameters:
+
+* **device_id**:
+* **status**:
+
+~~~json
+{
+  "action":"log",
+  "request_token":"A token for making it every request unique",
+  "body":{
+    "device_id":"",
+    "status":{
+      "temperature":"12.3",
+      "humidity":"80"
+    }
+  }
+}
+~~~
