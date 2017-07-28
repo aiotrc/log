@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/I1820/I1820-log#readme",
   "dependencies": {
+    "bluebird": "^3.5.0",
     "cassandra-driver": "^3.2.2",
     "hashmap": "^2.1.0",
     "mqtt": "^2.9.3"
