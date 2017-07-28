@@ -4,8 +4,13 @@ var moment = require('moment');
 const db = require('./../database/database');
 
 mqtt_router.on('log', (body, request_token)=>{
-    console.log(process.hrtime()[1]);
-    console.log(moment().unix());
+    const query = "INSERT INTO logs (timestamp, nanoseconds, device_id, status) VALUES";
+    let nanoseconds = process.hrtime()[1];
+    let timestamp = moment().unix();
+    let parameter = [timestamp, nanoseconds, body.device_id, status];
+    db.cassandraClient().execute(query, body, (error)=>{
+        console.error(error);
+    });
     console.log('log handler is called');
 });
 
