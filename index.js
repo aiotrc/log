@@ -11,7 +11,7 @@ client.on('connect', () => {
     client.subscribe('log');
 
     database.cassandraConnect().
-    then((client)=>console.log('Successfully connected to cassandra')).
+    then((cassandraClient)=>console.log('Successfully connected to cassandra')).
     error((error)=> console.log(error));
 });
 
