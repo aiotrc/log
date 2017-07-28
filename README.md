@@ -31,8 +31,8 @@ For starting the dependencies of the project should be installed with npm:
 
 For the log insertion the body has to contain two parameters:
 
-* **device_id**:
-* **status**:
+* **device_id**: agent_id , thing_id and type are mapped to a number called device_id. this should be handled by `Connectivity` micro service. 
+* **status**: it's excatly the status part of the json string sent to `Connectivity` micro service.
 
 ~~~json
 {
