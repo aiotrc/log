@@ -9,9 +9,11 @@ class MqttRouter{
         this.map.set(action, actionHandler);
     }
 
-    invoke(action){
-        return this.map.get(action) || this.map.get('unknown');     // Return the desired handler or the unknown handler
-    }
+    invoke(action){ 
+
+		// Return the desired handler or the unknown handler
+        return this.map.get(action) || this.map.get('unknown');     
+	}
 
 }
 
