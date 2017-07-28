@@ -19,6 +19,7 @@
   "dependencies": {
     "bluebird": "^3.5.0",
     "cassandra-driver": "^3.2.2",
+    "dotenv": "^4.0.0",
     "hashmap": "^2.1.0",
     "moment": "^2.18.1",
     "mqtt": "^2.9.3"
