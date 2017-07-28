@@ -1,10 +1,11 @@
 const Promise = require('bluebird');
 const Cassandra = require('cassandra-driver');
-
+const config = require('./../config');
 var cassandraClient;
 
 module.exports.cassandraConnect = ()=>{
-    const client = new Cassandra.Client({ contactPoints: ['localhost:9042'] , keyspace: 'i1820' });
+    const client = new Cassandra.Client({ contactPoints: [config.cassandra.hostname + ':' + config.cassandra.port],
+        keyspace: config.cassandra.key_space });
     return new Promise((resolve, error) => {
         client.connect((err)=>{
             if (err) error(error);
