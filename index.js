@@ -1,9 +1,11 @@
 const mqtt = require('mqtt');
+const config = require('./config');
 
 var mqtt_router = require('./route/handlers');
 
-const client  = mqtt.connect('mqtt://localhost');
+const client  = mqtt.connect('mqtt://' + config.mqtt.message_broker_url);
 const database = require('./database/database');
+
 
 client.on('connect', () => {
     client.subscribe('log');
