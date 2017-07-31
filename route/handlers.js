@@ -4,10 +4,10 @@ var moment = require('moment');
 const db = require('./../database/database');
 
 mqtt_router.on('log', (body, request_token)=>{
-    const query = "INSERT INTO logs (timestamp, nanoseconds, device_id, status) VALUES";
+    const query = "INSERT INTO logs (timestamp, nanoseconds, device_id, states) VALUES (?,?,?,?)";
     let nanoseconds = process.hrtime()[1];
     let timestamp = moment().unix();
-    let parameter = [timestamp, nanoseconds, body.device_id, status];
+    let parameter = [timestamp, nanoseconds, body.device_id, states];
     db.cassandraClient().execute(query, body, (error)=>{
         console.error(error);
     });
