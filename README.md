@@ -47,3 +47,9 @@ For the log insertion the body has to contain two parameters:
   }
 }
 ~~~
+
+Sample:
+
+~~~json
+{"action":"log", "request_token":"1","body":{"device_id":"12","states":{"temp":"12.3","humidity":"15.5"}}}
+~~~
