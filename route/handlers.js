@@ -8,7 +8,7 @@ mqtt_router.on('log', (body, request_token)=>{
     let nanoseconds = process.hrtime()[1];
     let timestamp = moment().unix();
     let parameter = [timestamp, nanoseconds, body.device_id, body.states];
-    db.cassandraClient().execute(query, parameter, (error)=>{
+    db.cassandraClient().execute(query, parameter, {prepare:true}, (error)=>{
         console.error(error);
     	console.log('log handler is called');
     });
