@@ -9,7 +9,6 @@ const database = require('./database/database');
 
 client.on('connect', () => {
     client.subscribe('log');
-	client.publish('log',JSON.stringify({"action":"log", "request_token":"1","body":{"states":{"temp":"12.3","humidity":"15.5"},"device_id":"11"}}));
     database.cassandraConnect().
     then((cassandraClient)=>console.log('Successfully connected to cassandra')).
     error((error)=> console.log(error));
