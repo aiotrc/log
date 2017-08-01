@@ -3,7 +3,7 @@ const config = require('./config');
 
 var mqtt_router = require('./route/handlers');
 
-const client  = mqtt.connect('mqtt://' + config.mqtt.message_broker_url);
+const client  = mqtt.connect('mqtt://' + config.mqtt.message_broker_url + ":" + config.mqtt.message_broker_port);
 const database = require('./database/database');
 
 
