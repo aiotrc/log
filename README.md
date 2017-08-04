@@ -31,7 +31,7 @@ For starting the dependencies of the project should be installed with npm:
 
 For the log insertion the body has to contain two parameters:
 
-* **device_id**: agent_id , thing_id and type are mapped to a number called device_id. this should be handled by `Connectivity` micro service. 
+* **device_id**: agent_id , thing_id and type are mapped to a text called device_id. this should be handled by `Connectivity` micro service. 
 * **status**: it's excatly the status part of the json string sent to `Connectivity` micro service.
 
 ~~~json
@@ -39,10 +39,10 @@ For the log insertion the body has to contain two parameters:
   "action":"log",
   "request_token":"A token for making it every request unique",
   "body":{
-    "device_id":"",
+    "device_id":STRING,
     "status":{
-      "temperature":"12.3",
-      "humidity":"80"
+      "temperature":FLOAT,
+      "humidity":FLOAT
     }
   }
 }
@@ -51,5 +51,5 @@ For the log insertion the body has to contain two parameters:
 Sample:
 
 ~~~json
-{"action":"log", "request_token":"1","body":{"device_id":"12","states":{"temp":"12.3","humidity":"15.5"}}}
+{"action":"log", "request_token":"1","body":{"device_id":"casfrt[$5x#","states":{"temp":12.3,"humidity":15.5}}}
 ~~~
