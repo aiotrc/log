@@ -11,6 +11,15 @@ module.exports.cassandra = {
     key_space: process.env.CASSANDRA_KEYSPACE || 'i1820'
 };
 
+<<<<<<< HEAD
+module.exports.influx = {
+	hostname: process.env.INFLUX_HOST || '127.0.0.1',
+    port: process.env.INFLUX_PORT || '8086',
+	database: process.env.INFLUX_DATABASE || 'i1820'
+}
+
+=======
+>>>>>>> 4f72216f47d21b8d4bf448478aa304e6b4a5ae5c
 let mongo = {
     hostname: process.env.MONGO_HOSTNAME || 'localhost',
     port: process.env.MONGO_PORT || 27017,
@@ -22,4 +31,8 @@ let mongo = {
 
 module.exports.mongodb = mongo;
 
+<<<<<<< HEAD
 module.exports.getMongoDBUri = () => 'mongodb://' + mongo.hostname + ':' + mongo.port + '/' + mongo.db;
+=======
+module.exports.getMongoDBUri = () => 'mongodb://' + mongo.hostname + ':' + mongo.port + '/' + mongo.db;
+>>>>>>> 4f72216f47d21b8d4bf448478aa304e6b4a5ae5c

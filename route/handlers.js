@@ -9,9 +9,36 @@ mqtt_router.on('log', (body, request_token)=>{
     let timestamp = moment().unix();
     let parameter = [timestamp, nanoseconds, body.device_id, body.states];
     db.cassandraClient().execute(query, parameter, {prepare:true}, (error)=>{
+<<<<<<< HEAD
+		if (error) {
+        	console.error(error);
+    		console.log('log handler is called');
+		}
+=======
         console.error(error);
     	console.log('log handler is called');
+>>>>>>> 4f72216f47d21b8d4bf448478aa304e6b4a5ae5c
     });
+
+	db.influxClient().writePoints([
+		{
+			measurement: "logs",
+		   	tags: {
+				device_id: body.device_id
+			},
+			fields: {
+				temp: body.states.temp,
+				humidity: body.states.humidity
+			}
+		}
+	]).then(() => {
+		console.log('successfully inserted');
+		db.influxClient().query('select * from logs');
+	}).catch(err => {
+		console.log(err);
+	})
+
+//	db.influxClient().query('insert logs,device_id=10 temp=2.3,humidity=3.4');
 });
 
 mqtt_router.on('get', (body, request_token)=>{
