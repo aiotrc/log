@@ -10,3 +10,11 @@ module.exports.cassandra = {
     port: process.env.CASSANDRA_PORT || '9042',
     key_space: process.env.CASSANDRA_KEYSPACE || 'i1820'
 };
+
+module.exports.mongodb = {
+    hostname: process.env.MONGO_HOSTNAME || 'localhost',
+    port: process.env.MONGO_PORT || 27027,
+    db: process.env.MONGO_DB || 'i1820logs',
+    username: process.env.MONGO_USERNAME || '',
+    password: process.env.MONGO_PASSWORD || ''
+};
