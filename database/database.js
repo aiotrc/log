@@ -1,5 +1,7 @@
 const Promise = require('bluebird');
 const Cassandra = require('cassandra-driver');
+const Influx = require('influxdb-nodejs');
+const influxClient = new Influx('http://127.0.0.1:8086/i1820');
 const config = require('./../config');
 var cassandraClient;
 
@@ -19,3 +21,4 @@ module.exports.cassandraConnect = ()=>{
 };
 
 module.exports.cassandraClient = ()=> cassandraClient;
+module.exports.influxClient = ()=> influxClient;
