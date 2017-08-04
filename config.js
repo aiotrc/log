@@ -11,10 +11,15 @@ module.exports.cassandra = {
     key_space: process.env.CASSANDRA_KEYSPACE || 'i1820'
 };
 
-module.exports.mongodb = {
+let mongo = {
     hostname: process.env.MONGO_HOSTNAME || 'localhost',
-    port: process.env.MONGO_PORT || 27027,
+    port: process.env.MONGO_PORT || 27017,
     db: process.env.MONGO_DB || 'i1820logs',
+    auth: process.env.MONGO_AUTH_DB || 'admin',
     username: process.env.MONGO_USERNAME || '',
     password: process.env.MONGO_PASSWORD || ''
 };
+
+module.exports.mongodb = mongo;
+
+module.exports.getMongoDBUri = () => 'mongodb://' + mongo.hostname + ':' + mongo.port + '/' + mongo.db;
