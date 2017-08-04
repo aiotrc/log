@@ -12,18 +12,6 @@ client.on('connect', () => {
     database.cassandraConnect().
     then((cassandraClient)=>console.log('Successfully connected to cassandra')).
     error((error)=> console.log(error));
-
-    database.influxClient().write('logs')
-        .tag({
-            device_id : 2
-        })
-        .field({
-            hum : 4.5,
-            koon : 2,
-            temp : 3.4
-        })
-        .then(()=> console.log('write done'))
-        .catch(console.error);
 });
 
 client.on('message', (topic, message) => {
