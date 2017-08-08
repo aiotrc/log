@@ -1,5 +1,6 @@
 var mqtt_router = require('./mqtt-router');
 var moment = require('moment');
+const logger = require('./../log/log');
 
 const db = require('./../database/database');
 
@@ -9,12 +10,7 @@ mqtt_router.on('log', (body, request_token)=>{
     let timestamp = moment().unix();
     let parameter = [timestamp, nanoseconds, body.device_id, body.states];
     db.cassandraClient().execute(query, parameter, {prepare:true}, (error)=>{
-		if (error) {
-        	console.error(error);
-    		console.log('log handler is called');
-		}
-        console.error(error);
-    	console.log('log handler is called');
+		if (error) logger.log('error', error);
     });
 
 	db.influxClient().writePoints([
@@ -28,12 +24,9 @@ mqtt_router.on('log', (body, request_token)=>{
 				humidity: body.states.humidity
 			}
 		}
-	]).then(() => {
-		console.log('successfully inserted');
-		db.influxClient().query('select * from logs');
-	}).catch(err => {
-		console.log(err);
-	})
+	]).
+	then(() => db.influxClient().query('select * from logs')).
+	catch(err => logger.log('error', err));
 
 //	db.influxClient().query('insert logs,device_id=10 temp=2.3,humidity=3.4');
 });
@@ -43,9 +36,7 @@ mqtt_router.on('get', (body, request_token)=>{
     console.log(db.cassandraClient);
     db.cassandraClient().execute(query, (error, result)=>{
         if (error){
-            console.log('this error');
-            console.error(error);
-            console.log('that error');
+            logger.log('error', error)
         } else
             console.log(result.rows[0])
     });
@@ -53,7 +44,7 @@ mqtt_router.on('get', (body, request_token)=>{
 });
 
 mqtt_router.on('unknown', (body, request_token)=>{
-    console.error('The unknown action is called');
+    logger.log('error', 'The unknown action is called')
 });
 
 
