@@ -4,6 +4,7 @@ const Influx = require('influx');
 
 const config = require('./../config');
 
+
 var cassandraClient;
 var _influxClient;
 
