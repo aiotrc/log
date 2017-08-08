@@ -2,20 +2,10 @@ const Promise = require('bluebird');
 const Cassandra = require('cassandra-driver');
 const Influx = require('influx');
 
-const influxClient = new Influx.InfluxDB({
-	host : 'localhost',
-	database : 'i1820',
-	schema : [
-		{
-			measurment : 'logs'
-		}
-	]
-});
-
-
 const config = require('./../config');
+
 var cassandraClient;
-var influxClient;
+var _influxClient;
 
 module.exports.cassandraConnect = ()=>{
     const client = new Cassandra.Client({ contactPoints: [config.cassandra.hostname + ':' + config.cassandra.port],
@@ -49,7 +39,7 @@ module.exports.influxConnect = ()=> {
 
 			})
 			.then (() => {
-				influxClient = client;
+				_influxClient = client;
 				resolve(client);
 			})
 			.catch(err => {
@@ -62,4 +52,4 @@ module.exports.influxConnect = ()=> {
 
 
 module.exports.cassandraClient = ()=> cassandraClient;
-module.exports.influxClient = ()=> influxClient;
+module.exports.influxClient = ()=> _influxClient;
