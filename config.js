@@ -2,7 +2,8 @@ require('dotenv').config();
 
 module.exports.mqtt = {
     message_broker_url: process.env.MQTT_MESSAGE_BROKER || '127.0.0.1',
-    message_broker_port: process.env.MQTT_MESSAGE_BROKER_PORT || '9994'
+    message_broker_port: process.env.MQTT_MESSAGE_PORT || '1883',
+    sub_chanel: process.env.MQTT_SUB_CHANNEL || 'log'
 };
 
 module.exports.cassandra = {
