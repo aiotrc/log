@@ -1,8 +1,7 @@
 const Promise = require('bluebird');
 const Cassandra = require('cassandra-driver');
 const Influx = require('influx');
-<<<<<<< HEAD
-=======
+
 const influxClient = new Influx.InfluxDB({
 	host : 'localhost',
 	database : 'i1820',
@@ -13,7 +12,7 @@ const influxClient = new Influx.InfluxDB({
 	]
 });
 
->>>>>>> 4f72216f47d21b8d4bf448478aa304e6b4a5ae5c
+
 const config = require('./../config');
 var cassandraClient;
 var influxClient;
@@ -33,7 +32,7 @@ module.exports.cassandraConnect = ()=>{
     });
 };
 
-<<<<<<< HEAD
+
 
 module.exports.influxConnect = ()=> {
 	const client = new Influx.InfluxDB({
@@ -47,7 +46,7 @@ module.exports.influxConnect = ()=> {
 				if (!names.includes(config.influx.database)) {
 					return client.createDatabase(config.influx.database);
 				}
-	
+
 			})
 			.then (() => {
 				influxClient = client;
@@ -60,7 +59,7 @@ module.exports.influxConnect = ()=> {
 };
 
 
-=======
->>>>>>> 4f72216f47d21b8d4bf448478aa304e6b4a5ae5c
+
+
 module.exports.cassandraClient = ()=> cassandraClient;
 module.exports.influxClient = ()=> influxClient;
