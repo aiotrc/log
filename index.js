@@ -3,10 +3,11 @@ const config = require('./config');
 var mqtt_router = require('./route/handlers');
 const client  = mqtt.connect('mqtt://' + config.mqtt.message_broker_url + ":" + config.mqtt.message_broker_port);
 const database = require('./database/database');
-const influx = 
+const log = require('./log/log');
 
 client.on('connect', () => {
-    client.subscribe('log');
+    client.subscribe(config.mqtt.sub_chanel);
+    // log.log('Start subscribing on chanel : ' + config.mqtt.sub_chanel);
     database.cassandraConnect().
     then((cassandraClient)=>console.log('Successfully connected to cassandra')).
     error((error)=> console.log(error));
