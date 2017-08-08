@@ -11,7 +11,4 @@ winston.add(winston.transports.MongoDB, {
     collection: config.mongodb.collection,
 });
 
-winston.log('info', 'Some this is me');
-
-
 module.exports = winston;
