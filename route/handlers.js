@@ -9,15 +9,12 @@ mqtt_router.on('log', (body, request_token)=>{
     let timestamp = moment().unix();
     let parameter = [timestamp, nanoseconds, body.device_id, body.states];
     db.cassandraClient().execute(query, parameter, {prepare:true}, (error)=>{
-<<<<<<< HEAD
 		if (error) {
         	console.error(error);
     		console.log('log handler is called');
 		}
-=======
         console.error(error);
     	console.log('log handler is called');
->>>>>>> 4f72216f47d21b8d4bf448478aa304e6b4a5ae5c
     });
 
 	db.influxClient().writePoints([
