@@ -25,7 +25,8 @@ let mongo = {
     db: process.env.MONGO_DB || 'i1820logs',
     auth: process.env.MONGO_AUTH_DB || 'admin',
     username: process.env.MONGO_USERNAME || 'admin',
-    password: process.env.MONGO_PASSWORD || 'mohtadin'
+    password: process.env.MONGO_PASSWORD || 'admin',
+    collection: process.env.MONGO_LOG_COLLECTION || 'log'
 };
 
 module.exports.mongodb = mongo;

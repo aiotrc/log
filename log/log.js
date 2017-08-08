@@ -2,13 +2,16 @@ const winston = require('winston');
 require('winston-mongodb').MongoDB;
 const config = require('./../config');
 
+function getMongoUrl() {
+    return 'mongodb://' + config.mongodb.username + ':' + config.mongodb.password + '@' + config.mongodb.hostname + ':' + config.mongodb.port + '/' + config.mongodb.db + '?authMechanism=DEFAULT&authSource=' + config.mongodb.auth;
+}
+
 winston.add(winston.transports.MongoDB, {
-    username: config.mongodb.username,
-    password: config.mongodb.password,
-    db: config.getMongoDBUri(),
-    collection: 'log',
-    authDb: config.mongodb.auth
+    db:getMongoUrl(),
+    collection: config.mongodb.collection,
 });
+
+winston.log('info', 'Some this is me');
 
 
 module.exports = winston;
