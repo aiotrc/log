@@ -18,8 +18,10 @@
   "homepage": "https://github.com/I1820/I1820-log#readme",
   "dependencies": {
     "bluebird": "^3.5.0",
+    "body-parser": "^1.17.2",
     "cassandra-driver": "^3.2.2",
     "dotenv": "^4.0.0",
+    "express": "^4.15.4",
     "hashmap": "^2.1.0",
     "influx": "^5.0.7",
     "moment": "^2.18.1",

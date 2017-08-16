@@ -16,7 +16,7 @@ module.exports.influx = {
     hostname: process.env.INFLUX_HOST || '127.0.0.1',
     port: process.env.INFLUX_PORT || '8086',
     database: process.env.INFLUX_DATABASE || 'i1820'
-}
+};
 
 
 let mongo = {
@@ -28,6 +28,11 @@ let mongo = {
     password: process.env.MONGO_PASSWORD || 'admin',
     collection: process.env.MONGO_LOG_COLLECTION || 'log'
 };
+let http = {
+    port: process.env.HTTP_SERVER_PORT || 8080
+};
+
+module.exports.http = http;
 
 module.exports.mongodb = mongo;
 

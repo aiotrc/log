@@ -1,6 +1,6 @@
 const mqtt = require('mqtt');
 const config = require('./config');
-var mqtt_router = require('./route/handlers');
+var mqtt_router = require('./route/mqtt/handlers');
 const client  = mqtt.connect('mqtt://' + config.mqtt.message_broker_url + ":" + config.mqtt.message_broker_port);
 const database = require('./database/database');
 const logger = require('./log/log');
@@ -8,6 +8,7 @@ const logger = require('./log/log');
 client.on('connect', () => {
     client.subscribe(config.mqtt.sub_chanel);
     logger.log('info','Start subscribing on chanel : ' + config.mqtt.sub_chanel);
+
     database.cassandraConnect().
     then((cassandraClient)=> console.log('Successfully connected to cassandra')).
     error((error)=> logger.log('error', error));
@@ -28,5 +29,14 @@ client.on('message', (topic, message) => {
     }
 });
 
+const express = require('express');
+const app = express();
+const resRoute = require('./route/rest/routes');
+const bodyParser = require('body-parser');
+
+app.use(bodyParser.urlencoded({extended: true}));
+
+app.use(resRoute);
 
 
+app.listen(config.http.port,()=>{console.log('Example app listening on port ' + config.http.port + '!')});
