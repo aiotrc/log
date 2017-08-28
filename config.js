@@ -2,7 +2,7 @@ require('dotenv').config();
 
 module.exports.mqtt = {
     message_broker_url: process.env.MQTT_MESSAGE_BROKER || '127.0.0.1',
-    message_broker_port: process.env.MQTT_MESSAGE_PORT || '1883',
+    message_broker_port: process.env.MQTT_MESSAGE_PORT || '9994',
     sub_chanel: process.env.MQTT_SUB_CHANNEL || 'log'
 };
 
@@ -29,7 +29,7 @@ let mongo = {
     collection: process.env.MONGO_LOG_COLLECTION || 'log'
 };
 let http = {
-    port: process.env.HTTP_SERVER_PORT || 8080
+    port: process.env.HTTP_SERVER_PORT || '4444'
 };
 
 module.exports.http = http;

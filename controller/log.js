@@ -45,8 +45,13 @@ class LogController{
         });
     }
 
-    getLogsFromInflux(){
-        return db.influxClient().query('select * from logs');
+    getLogsFromInflux(top){
+        return new Promise((resolve, reject)=> { 
+			const query = 'SELECT * FROM logs ORDER BY time DESC LIMIT ' + top;
+			db.influxClient().query(query).
+			then((result) => resolve(result)).
+		   	catch((error) => reject(error));	
+		});
     }
 
 
